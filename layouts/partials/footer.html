@@ -4,7 +4,9 @@
 	</nav>
 </div>
 
-{{/* Google Analytics removed - use hugo.toml googleAnalytics setting if needed */}}
+{{- if and (not hugo.IsServer) .Site.Config.Services.GoogleAnalytics.ID -}}
+{{ template "_internal/google_analytics.html" . }}
+{{- end -}}
 {{- with .Site.Params.Social -}}
 <script>feather.replace()</script>
 {{- end -}}
